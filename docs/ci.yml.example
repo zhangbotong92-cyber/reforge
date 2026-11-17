@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.9", "3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: End-to-end demo (offline, no keys, no GPU)
+        run: python -m reforge demo --outdir ci_out
+      - name: CLI smoke
+        run: |
+          python -m reforge doctor
+          python -m reforge inspect ci_out/a1111.png
+          python -m reforge score ci_out/a1111.png ci_out/alt.png
+          python -m reforge recipe ci_out/comfyui.png --embed ci_out/stamped.png --controls
+      - name: Controls + video paths
+        run: |
+          python -m reforge controls ci_out/a1111.png --outdir ci_ctl --kinds canny,lineart,tile,seg,depth
+          python -m reforge video --frames-dir ci_out/frames --max-shots 3 --json > /dev/null
+      - name: README visuals still render
+        run: python docs/make_hero.py

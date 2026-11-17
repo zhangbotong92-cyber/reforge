@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use REFORGE in research or in a product, cite it like this."
+title: "REFORGE: reverse-engineer any AI image or video into a reproducible recipe"
+abstract: >-
+  REFORGE recovers or reconstructs the generation parameters behind AI-generated media.
+  It reads embedded metadata first (A1111, ComfyUI, NovelAI, InvokeAI, EXIF, MP4, C2PA),
+  falls back to structured captioning and control-map extraction, and packages the result
+  as a versioned recipe (prompt, sampling pins, control signals, reference images,
+  inversion latents) that is stamped back into the file. A model-free metric suite
+  (PSNR, SSIM, DCT-pHash, edge IoU, palette delta) grades every regenerated result on an
+  L0-L3 fidelity scale, so "reproducible" is measured rather than asserted.
+authors:
+  - name: "REFORGE contributors"
+    website: "https://github.com/zhangbotong92-cyber/reforge"
+version: "0.3.1"
+date-released: "2026-11-18"
+license: MIT
+repository-code: "https://github.com/zhangbotong92-cyber/reforge"
+url: "https://github.com/zhangbotong92-cyber/reforge"
+keywords:
+  - prompt reverse engineering
+  - image-to-prompt
+  - reproducibility
+  - diffusion inversion
+  - content provenance
+  - C2PA
+  - ComfyUI
+  - video generation

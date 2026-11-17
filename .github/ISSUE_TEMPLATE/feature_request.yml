@@ -1,0 +1,47 @@
+name: Feature / site support
+description: A new format to parse, a new dialect, a new backend, a new metric.
+title: "[feat] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every extension in this project is one function plus one test. If your idea needs
+        more than that, say so — it usually means the contract is wrong and should be fixed first.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of addition
+      options:
+        - new metadata format (a tool that embeds its parameters)
+        - new caption backend (a VLM endpoint)
+        - new prompt dialect (a platform)
+        - new control backend (depth / pose / flow / camera)
+        - new metric or grading rule
+        - new video backend
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What it does
+      description: One paragraph. Include a link to the tool, model, or spec.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance check
+      description: How will we know it works, as a number or a fixture rather than a feeling?
+    validations:
+      required: true
+  - type: checkboxes
+    id: rules
+    attributes:
+      label: Project rules
+      options:
+        - label: It can ship without adding a hard dependency beyond numpy + Pillow
+          required: true
+        - label: I understand approximations must be labelled `approximate` in the recipe
+          required: true

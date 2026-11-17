@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security report
+    url: https://github.com/zhangbotong92-cyber/reforge/security/advisories/new
+    about: Please do not open a public issue for a vulnerability. Use a private advisory.
+  - name: "Question: how do I get tier L3?"
+    url: https://github.com/zhangbotong92-cyber/reforge/blob/main/ARCHITECTURE.md
+    about: The fidelity ladder and what each tier needs is documented in ARCHITECTURE.md.

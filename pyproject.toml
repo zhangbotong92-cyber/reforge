@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reforge"
+version = "0.3.1"
+description = "Reverse-engineer any AI image/video into a reproducible recipe: prompt + controls + pins, stamped back into the file."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "REFORGE contributors" }]
+keywords = ["reverse-prompt", "image-to-prompt", "reproducibility", "stable-diffusion", "comfyui", "forensics", "c2pa", "video"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Multimedia :: Graphics",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "numpy>=1.20",
+  "pillow>=9.0",
+]
+
+[project.optional-dependencies]
+controls = ["opencv-python-headless>=4.8", "onnxruntime>=1.16"]
+full = ["opencv-python-headless>=4.8", "onnxruntime>=1.16", "torch"]
+space = ["gradio>=4.44"]
+dev = ["pytest", "build", "twine", "torch", "onnx"]
+
+[project.urls]
+Homepage = "https://github.com/zhangbotong92-cyber/reforge"
+Issues = "https://github.com/zhangbotong92-cyber/reforge/issues"
+Changelog = "https://github.com/zhangbotong92-cyber/reforge/blob/main/ROADMAP.md"
+
+[project.scripts]
+reforge = "reforge.cli:main"
+
+[tool.setuptools]
+packages = ["reforge"]
+
+[tool.setuptools.package-data]
+reforge = ["static/*.html"]

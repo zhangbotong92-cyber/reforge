@@ -1,0 +1,30 @@
+# byte-compiled
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# virtualenvs
+.venv/
+venv/
+env/
+
+# test / demo artifacts
+demo_out/
+examples/out/
+reforge_controls/
+*.recipe.json
+!tests/fixtures/*.recipe.json
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# local keys
+.env
+.env.*
+!

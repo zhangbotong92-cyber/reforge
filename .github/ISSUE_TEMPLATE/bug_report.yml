@@ -1,0 +1,54 @@
+name: Bug report
+description: Something produced the wrong bytes, the wrong score, or the wrong answer.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Wrong-but-confident is the worst failure mode this project can have, so these get priority.
+        Please include a fixture or the exact command — a report I cannot reproduce usually stalls.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: The behaviour you saw, and the behaviour you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: Exact command(s), plus `reforge inspect --json` output for file-parsing bugs.
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit
+      placeholder: "reforge 0.2.0 or commit 7440a33"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - forensics (metadata parsing)
+        - caption / dialects
+        - controls (canny / depth / pose / seg)
+        - recipe (fingerprint / embed)
+        - metrics / scoring
+        - video (shots / plan)
+        - CLI / Web UI / Space
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: OS, Python, and whether cv2 / onnxruntime / ffmpeg / torch are installed (`reforge doctor` output).
+      render: shell
+    validations:
+      required: false
